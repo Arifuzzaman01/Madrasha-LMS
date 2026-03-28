@@ -4,6 +4,7 @@ import Navigation from "./Navigation";
 import Link from "next/link";
 import { FaFacebookF, FaInstagram, FaYoutube } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
+import Search from "./Search";
 
 const Navbar = () => {
   return (
@@ -40,6 +41,7 @@ const Navbar = () => {
           <p className="text-sm">Email: info@kalirtabakamiria.edu.bd</p>
         </div>
       </div>
+      {/* desktop view */}
       <div className="hidden md:flex items-center justify-between">
         <div className="flex-1">
           <Image
@@ -53,10 +55,12 @@ const Navbar = () => {
           <Navigation />
         </div>
       </div>
-      <div className=" flex items-center justify-between md:hidden">
-        <div className="flex-2">
+      {/* mobile view */}
+      <div className=" flex items-center justify-between md:hidden mx-2">
+        <div className="flex-1">
           <Navigation />
         </div>
+
         <div className="flex-1">
           <Image
             src={"/nav-logo.png"}
@@ -64,6 +68,9 @@ const Navbar = () => {
             height={70}
             alt="navbar educate logo"
           />
+        </div>
+        <div className="mt-2">
+          <Search />
         </div>
       </div>
     </div>

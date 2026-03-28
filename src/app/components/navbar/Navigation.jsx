@@ -3,7 +3,7 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { IoIosArrowDown, IoMdMenu, IoMdClose } from "react-icons/io";
 import { HiOutlineUserCircle } from "react-icons/hi";
-import { IoSearch } from "react-icons/io5";
+import Search from "./Search";
 
 const Navigation = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -75,7 +75,7 @@ const Navigation = () => {
 
         {/* 3. Right Side Actions (Login Button) */}
         <div className="hidden md:flex items-center gap-4">
-            <button><IoSearch size={24} className="text-primary_text" /></button>
+            <Search />
           <button className="flex items-center gap-2 px-5 py-2.5 bg-emerald-700 text-white rounded-full font-medium hover:bg-emerald-800 transition-all">
             <HiOutlineUserCircle size={20} />
             Login
@@ -98,7 +98,7 @@ const Navigation = () => {
       >
         <div
           className={`absolute top-0 right-0 h-full w-[300px] bg-white shadow-2xl transform transition-transform duration-300 ease-in-out p-6 ${isMobileMenuOpen ? "translate-x-0" : "translate-x-full"}`}
-          onClick={(e) => e.stopPropagation()} // ড্রয়ারের ভেতরে ক্লিক করলে যেন ড্রয়ার বন্ধ না হয়
+          onClick={(e) => e.stopPropagation()} 
         >
           <div className="flex justify-between items-center mb-10">
             <span className="text-xl font-bold text-emerald-700">
