@@ -20,7 +20,7 @@ const CategoryCard = ({ category }) => {
 
         {/* --- Left Icon --- */}
         <div
-          className="relative z-10 p-3 md:p-4 rounded-full bg-emerald-50 text-emerald-600 transition-all duration-300 group-hover:bg-white/20 group-hover:text-white shrink-0"
+          className="relative z-10 p-3 md:p-4 rounded-t-full rounded-br-full bg-emerald-50 text-emerald-600 transition-all duration-300 group-hover:bg-white/20 group-hover:text-white shrink-0"
         >
           {React.cloneElement(icon, { 
             size: typeof window !== 'undefined' && window.innerWidth < 768 ? 22 : 28 

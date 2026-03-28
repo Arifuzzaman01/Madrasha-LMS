@@ -21,7 +21,7 @@ const categoriesData = [
 
 const CourseCategories = () => {
   return (
-    <section className="bg-white py-16 md:py-24">
+    <section className=" py-10 ">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col items-center">
         
         {/* --- Header Section --- */}
@@ -41,7 +41,7 @@ const CourseCategories = () => {
         </div>
 
         {/* --- Footer Button --- */}
-        <div className="mt-16">
+        <div className=" w-full mt-10 flex justify-end  ">
           <Btn text="সব কোর্স দেখুন" href="/courses" />
         </div>
 
