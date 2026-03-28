@@ -6,7 +6,7 @@ import { FaGraduationCap, FaStar, FaPlay } from "react-icons/fa";
 import { IoLibraryOutline } from "react-icons/io5";
 import { FiUsers } from "react-icons/fi";
 import StatCard from "./StatCard"; // Import the client component
-import Btn from "./Btn";
+import Btn from "../common/Btn";
 
 const HeroBanner = () => {
   return (
@@ -42,13 +42,7 @@ const HeroBanner = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row items-center gap-6 justify-center lg:justify-start">
-              {/* <Link
-                href="/courses"
-                className="group flex items-center gap-2 px-8 py-4 bg-emerald-700 text-white rounded-full font-bold shadow-lg shadow-emerald-200 hover:bg-emerald-800 transition-all active:scale-95"
-              >
-                Find Courses
-                <HiArrowRight className="group-hover:translate-x-1 transition-transform" />
-              </Link> */}
+            
               <Btn text="Find Courses" href="/courses" />
 
               <div className="flex items-center gap-3">
@@ -90,8 +84,8 @@ const HeroBanner = () => {
               />
 
               {/* Course Preview Card (Server Side) */}
-              <div className="hidden md:col-span-2 bg-white p-6 rounded-[2.5rem] shadow-md border border-gray-100 md:flex flex-col md:flex-row gap-6 items-center">
-                <div className="w-full md:w-40 h-32 bg-emerald-50 rounded-2xl flex items-center justify-center text-emerald-700">
+              <div className="hidden md:col-span-2 bg-white p-5 rounded-[2.5rem] shadow-md border border-gray-100 md:flex flex-col md:flex-row gap-6 items-center">
+                <div className="w-full flex-1 h-36 bg-emerald-50 rounded-2xl flex items-center justify-center text-emerald-700">
                   <FaPlay size={24} />
                 </div>
                 <div className="flex-1 text-center md:text-left">
