@@ -70,7 +70,7 @@ const Footer = () => {
           </div>
 
           {/* 2. Quick Links */}
-          <div className="md:col-span-1">
+          <div className="md:col-span-1 font-semibold">
             <h3 className="text-gray-900 font-bold mb-6 text-lg">
               প্রয়োজনীয় লিংক
             </h3>
@@ -90,7 +90,7 @@ const Footer = () => {
           </div>
 
           {/* 3. Support & Legal */}
-          <div className="md:col-span-1">
+          <div className="md:col-span-1 font-semibold">
             <h3 className="text-gray-900 font-bold mb-6 text-lg">সাপোর্ট</h3>
             <ul className="space-y-3">
               {footerLinks.support.map((link, i) => (
@@ -133,7 +133,7 @@ const Footer = () => {
           <p className="flex items-center gap-1">
             Built with ❤️ by{" "}
             <span className="text-emerald-700 font-semibold hover:underline cursor-pointer">
-              Rakib
+             Arifuzzaman Rakib
             </span>
           </p>
         </div>
