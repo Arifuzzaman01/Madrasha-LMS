@@ -4,6 +4,8 @@ import React, { useState } from "react";
 import { IoIosArrowDown, IoMdMenu, IoMdClose } from "react-icons/io";
 import { HiOutlineUserCircle } from "react-icons/hi";
 import Search from "./Search";
+import { FaBell } from "react-icons/fa";
+import Notification from "./Notification";
 
 const Navigation = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -36,8 +38,8 @@ const Navigation = () => {
   };
 
   return (
-    <nav >
-      <div className="flex justify-between items-center h-16">
+    <nav>
+      <div className="flex justify-between items-center h-14">
         {/* 2. Desktop Menu (Hidden on Mobile) */}
         <ul className="hidden md:flex gap-8 items-center font-semibold text-gray-600">
           {menuItems.map((item, idx) => (
@@ -74,8 +76,9 @@ const Navigation = () => {
         </ul>
 
         {/* 3. Right Side Actions (Login Button) */}
-        <div className="hidden md:flex items-center gap-4">
-            <Search />
+        <div className="hidden md:flex items-center gap-2.5">
+          <Notification />
+          <Search />
           <button className="flex items-center gap-2 px-5 py-2.5 bg-emerald-700 text-white rounded-full font-medium hover:bg-emerald-800 transition-all">
             <HiOutlineUserCircle size={20} />
             Login
@@ -98,7 +101,7 @@ const Navigation = () => {
       >
         <div
           className={`absolute top-0 right-0 h-full w-[300px] bg-white shadow-2xl transform transition-transform duration-300 ease-in-out p-6 ${isMobileMenuOpen ? "translate-x-0" : "translate-x-full"}`}
-          onClick={(e) => e.stopPropagation()} 
+          onClick={(e) => e.stopPropagation()}
         >
           <div className="flex justify-between items-center mb-10">
             <span className="text-xl font-bold text-emerald-700">
