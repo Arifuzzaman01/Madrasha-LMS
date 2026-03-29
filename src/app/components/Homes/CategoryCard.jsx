@@ -10,13 +10,13 @@ const CategoryCard = ({ category }) => {
   return (
     <Link 
       href={`/courses?category=${name.toLowerCase().replace(/ /g, "-")}`}
-      className="block h-full" // Ensure the link takes full height of the grid cell
+      className="block h-full" 
     >
       <div
         className="relative p-5 md:p-8 rounded-2xl shadow-sm border border-gray-100 flex items-center gap-4 md:gap-6 overflow-hidden group transition-all duration-300 bg-white text-gray-900 h-full"
       >
         {/* --- Shutter Overlay --- */}
-        <div className="absolute inset-0 bg-black/70 transform -translate-y-full transition-transform duration-500 ease-in-out group-hover:translate-y-0 z-0"></div>
+        <div className={`absolute inset-0 bg-primary transform -translate-y-full transition-transform duration-500 ease-in-out ${category.popular ? 'translate-y-0' : 'group-hover:translate-y-0'} z-0`}></div>
 
         {/* --- Left Icon --- */}
         <div
@@ -28,7 +28,7 @@ const CategoryCard = ({ category }) => {
         </div>
 
         {/* --- Content --- */}
-        <div className="relative z-10 flex-1 min-w-0 transition-colors duration-300 group-hover:text-white">
+        <div className={`relative z-10 flex-1 min-w-0 transition-colors duration-300 ${category.popular ? 'text-white' : 'group-hover:text-white'}`}>
           <h3 className="text-lg md:text-xl font-bold truncate leading-tight">
             {name}
           </h3>
