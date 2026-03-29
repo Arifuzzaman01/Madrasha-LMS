@@ -16,8 +16,11 @@ const Navigation = () => {
       name: "Home",
       href: "/",
       subMenu: [
-        { name: "Service", href: "/service" },
-        { name: "Features", href: "/features" },
+        { name: "Home", href: "/#home" }, // সরাসরি পাথ সহ আইডি দিন
+        { name: "Courses Category", href: "/#coursesCategory" },
+        { name: "About", href: "/#homeAbout" },
+        { name: "Teachers", href: "/#teachers" },
+        { name: "Review", href: "/#review" },
       ],
     },
     {
@@ -25,6 +28,7 @@ const Navigation = () => {
       href: "/about",
       subMenu: [
         { name: "Our Vision", href: "/vision" },
+        { name: "Result History", href: "/resultHistory" },
         { name: "Teachers", href: "/teachers" },
       ],
     },
@@ -57,12 +61,12 @@ const Navigation = () => {
               {/* Desktop Dropdown */}
               {item.subMenu && (
                 <div className="absolute top-full left-0 w-48 bg-white shadow-xl  rounded-b-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 translate-y-2 group-hover:translate-y-0 overflow-hidden">
-                  <ul className="py-2">
+                  <ul className="py-2 scroll-smooth">
                     {item.subMenu.map((sub, sIdx) => (
-                      <li key={sIdx}>
+                      <li key={sIdx} className="px-5">
                         <Link
                           href={sub.href}
-                          className="block px-5 py-3 text-sm hover:bg-emerald-50 hover:text-emerald-700 transition-colors"
+                          className="block py-3 text-sm hover:bg-emerald-50 hover:text-emerald-700 transition-colors"
                         >
                           {sub.name}
                         </Link>

@@ -34,7 +34,7 @@ const reviewsData = [
 
 const ReviewSection = () => {
   return (
-    <section className="py-0 bg-emerald-50/30 overflow-hidden">
+    <section className="pb-14 bg-emerald-50/30 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row justify-between md:items-end mb-12 gap-6">
