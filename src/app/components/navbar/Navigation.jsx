@@ -29,7 +29,7 @@ const Navigation = () => {
       subMenu: [
         { name: "Our Vision", href: "/vision" },
         { name: "Result History", href: "/resultHistory" },
-        { name: "Teachers", href: "/teachers" },
+        { name: "Admission", href: "/admission" },
       ],
     },
     { name: "Courses", href: "/courses" },

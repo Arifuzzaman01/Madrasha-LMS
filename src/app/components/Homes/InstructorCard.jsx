@@ -12,12 +12,12 @@ import Link from "next/link";
 
 const InstructorCard = ({ instructor }) => {
   return (
-    <div className="w-full">
-      <div className=" group relative bg-gray-50 p-4 pt-10 pb-6 transition-all duration-500 overflow-hidden h-full flex flex-col items-center  rounded-lg ">
+    <div className="w-fit">
+      <div className=" group relative bg-gray-50 p-4 md:pt-10 pb-6 transition-all duration-500 overflow-hidden h-full flex flex-col items-center  rounded-lg ">
         {/* Opacity Shutter Overlay */}
 
         {/* Floating Social Links */}
-        <div className="absolute right-0 top-14 flex flex-col gap-3 z-30 ">
+        <div className="absolute left-[85%] top-8 lg:pt-5 flex flex-col gap-3 z-30 ">
           {[FaFacebookF, FaTwitter, FaYoutube].map((Icon, i) => (
             <Link
               key={i}

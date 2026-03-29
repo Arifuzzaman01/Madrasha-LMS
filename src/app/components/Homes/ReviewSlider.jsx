@@ -9,7 +9,7 @@ const ReviewSlider = ({ reviews }) => {
       {reviews.map((item) => (
         <div 
           key={item.id} 
-          className="group relative bg-white p-8 rounded-[2.5rem] shadow-sm border border-gray-100 transition-all duration-500 hover:shadow-2xl hover:shadow-emerald-100 overflow-hidden "
+          className="group relative bg-white p-8 rounded-[2.5rem] shadow-sm  transition-all duration-500 hover:shadow-2xl hover:shadow-emerald-100 overflow-hidden border-t-4 border-primary border-double "
         >
           {/* --- Shutter Overlay --- */}
           <div className="absolute inset-0 bg-emerald-900/90 -translate-y-full group-hover:translate-y-0 transition-transform duration-500 z-0 pointer-events-none"></div>
