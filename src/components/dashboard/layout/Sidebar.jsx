@@ -1,13 +1,15 @@
 "use client";
+import Image from "next/image";
+import Link from "next/link";
 import React, { useState } from "react";
 import {
   HiOutlineHome,
   HiOutlineChartBar,
-  HiOutlineMenuAlt2,
   HiOutlineChevronLeft,
   HiOutlineAcademicCap,
   HiOutlineX,
 } from "react-icons/hi";
+import { IoIosArrowForward } from "react-icons/io";
 import { Tooltip } from "react-tooltip";
 
 const menuItems = [
@@ -28,11 +30,18 @@ const menuItems = [
     name: "Analytics",
     icon: <HiOutlineChartBar size={22} />,
     path: "/dashboard/stats",
-  },
+  },{
+    id:"add-course",
+    name:"Add New Course",
+    icon:<HiOutlineAcademicCap size={22} />,
+    path: "/dashboard/publishCourses"
+
+  }
 ];
 
 export default function Sidebar({ isMobile ,setIsMenuOpen}) {
   const [isCollapsed, setIsCollapsed] = useState(false);
+  const [activeItem, setActiveItem] = useState("dash");
 
   return (
     <aside
@@ -42,22 +51,24 @@ export default function Sidebar({ isMobile ,setIsMenuOpen}) {
       {/* Toggle Button */}
       <button
         onClick={() => setIsCollapsed(!isCollapsed)}
-        className={`absolute -right-3 top-7 bg-emerald-600 text-white p-1 rounded-full shadow-lg transition-transform hover:scale-110 ${isMobile ? "hidden" : "block"}`}
+        className={`absolute -right-3 top-2/5 bg-emerald-600 text-white p-1 rounded-full shadow-lg transition-transform hover:scale-110 ${isMobile ? "hidden" : "block"}`}
       >
-        {isCollapsed ? <HiOutlineMenuAlt2 /> : <HiOutlineChevronLeft />}
+        {isCollapsed ? <IoIosArrowForward  /> : <HiOutlineChevronLeft />}
       </button>
 
       {/* Brand Logo */}
       <div className="flex justify-between items-center">
-        <div className="p-6 flex items-center gap-3 overflow-hidden">
-        <div className="w-8 h-8 bg-emerald-700 rounded-lg flex-shrink-0" />
+        <Link href="/" className="p-6 flex items-end gap-3 overflow-hidden hover:bg-green-50 w-full">
+        <div className="w-10 h-8  rounded-lg flex-shrink-0" >
+          <Image src={"/footer-logo.png"} width={80} height={80} alt="Dashboard Logo" />
+        </div>
         {!isCollapsed && (
-          <span className="font-black text-xl tracking-tight text-gray-900">
-            CORE UI
+          <span className="font-black text-xl tracking-tight text-gray-900 -mb-2">
+            XyZ LMS
           </span>
         )}
-      </div>
-      <div className=" border-gray-50">
+      </Link>
+      <div className=" border-gray-50 md:hidden">
         <button
           onClick={() => setIsMenuOpen(false)}
           className="rounded-lg bg-gray-50 text-gray-500"
@@ -71,15 +82,15 @@ export default function Sidebar({ isMobile ,setIsMenuOpen}) {
       <nav className="flex-1 px-4 space-y-2 mt-4">
         {menuItems.map((item) => (
           <div key={item.id}>
-            <div
+            <Link href={item?.path} onClick={()=> setActiveItem(item.id)}
               data-tooltip-id="sidebar-tooltip"
               data-tooltip-content={isCollapsed ? item.name : ""}
-              className={`flex items-center gap-4 p-3 rounded-xl cursor-pointer transition-all
-                ${isCollapsed ? "justify-center" : "hover:bg-emerald-50 text-gray-600 hover:text-emerald-700 font-bold text-sm"}`}
+              className={`flex items-center gap-4 p-3 rounded-sm cursor-pointer transition-all 
+                ${isCollapsed ? "justify-center" : "hover:bg-emerald-50 text-gray-600 hover:text-emerald-700 font-bold text-sm"} ${activeItem === item?.id && "bg-green-200"}`}
             >
               <div className="flex-shrink-0">{item.icon}</div>
               {!isCollapsed && <span>{item.name}</span>}
-            </div>
+            </Link>
           </div>
         ))}
       </nav>

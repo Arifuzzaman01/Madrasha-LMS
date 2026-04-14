@@ -4,7 +4,7 @@ import { HiArrowRight } from "react-icons/hi";
 
 const Btn = ({ text, href = "#", Icon ,clsName}) => {
   return (
-    <div className="relative inline-block overflow-hidden rounded-full group">
+    <div className={`relative inline-block overflow-hidden rounded-full group ${clsName ? clsName : ''}`}>
       <Link
         href={href}
         className={`relative z-10 flex items-center gap-2  bg-primary text-white font-bold shadow-lg shadow-emerald-200 active:scale-95 transition-all duration-300 ${clsName ? clsName : 'px-8 py-4'}`}

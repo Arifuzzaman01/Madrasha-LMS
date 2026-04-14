@@ -26,7 +26,7 @@ export default function Header() {
 
   return (
     <>
-      <header className="h-16 bg-white border-b border-gray-100 flex items-center justify-between px-6 sticky top-0 z-40">
+      <header className="h-16 bg-white border-b-2 border-gray-100 flex items-center justify-between px-6 sticky top-0 z-40">
         {/* Hamburger Menu - Only visible on Mobile */}
         <button
           onClick={() => setIsMenuOpen(true)}
@@ -62,7 +62,9 @@ export default function Header() {
             </div>
           </div>
           
-          <Tooltip id="profile-tooltip" clickable place="bottom-end" /* style configurations as before */ />
+          <Tooltip id="profile-tooltip" clickable place="bottom-end" >
+            abc xyz abc axyz
+          </Tooltip>
         </div>
       </header>
 

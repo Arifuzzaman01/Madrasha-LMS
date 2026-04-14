@@ -15,7 +15,7 @@ export default function DashboardLayout({ children }) {
         <Header />
 
         {/* Page Content */}
-        <main className="p-6 overflow-y-auto h-[calc(100vh-64px)]">
+        <main className="p-5 overflow-y-auto h-[calc(100vh-64px)] ">
           {children}
         </main>
       </div>
