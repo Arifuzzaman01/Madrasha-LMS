@@ -1,5 +1,5 @@
-import CourseFilters from "@/app/components/coursess/CourseFilters";
-import CourseList from "@/app/components/coursess/CourseList";
+import CourseFilters from "@/components/coursess/CourseFilters";
+import CourseList from "@/components/coursess/CourseList";
 import React from "react";
 
 import { HiOutlineBookOpen } from "react-icons/hi";
@@ -81,6 +81,7 @@ export default function CoursesPage({ searchParams }) {
           <span>My Class</span>
         </button>
       </div> */}
+      
     </div>
   );
 }

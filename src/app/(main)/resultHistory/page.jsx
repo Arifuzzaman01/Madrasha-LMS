@@ -1,5 +1,5 @@
-import ResultTable from "@/app/components/resultHistory/ResultTable";
-import TabSwitcher from "@/app/components/resultHistory/TabSwitcher";
+import ResultTable from "@/components/resultHistory/ResultTable";
+import TabSwitcher from "@/components/resultHistory/TabSwitcher";
 import { CLASSES, getStudentsByClass } from "@/libs/mockData";
 import React from "react";
 

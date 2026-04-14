@@ -1,6 +1,6 @@
 // src/app/admissions/page.js
-import AdmissionForm from "@/app/components/admissions/AdmissionForm";
-import AdmissionSteps from "@/app/components/admissions/AdmissionSteps";
+import AdmissionForm from "@/components/admissions/AdmissionForm";
+import AdmissionSteps from "@/components/admissions/AdmissionSteps";
 import React from "react";
 
 import {

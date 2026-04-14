@@ -9,7 +9,7 @@ import Notification from "./Notification";
 
 const Navbar = () => {
   return (
-    <div className="  bg-white/90 backdrop:backdrop-blur-2xl  border-b border-primary/50  sticky top-0 z-50 shadow-sm">
+    <header className="  bg-white/90 backdrop:backdrop-blur-2xl  border-b border-primary/50  sticky top-0 z-50 shadow-sm">
       <div className=" hidden   bg-primary text-white/80 py-2 sm:flex items-center justify-between px-4">
         {/* academic name */}
         <h3>Kalir Tabak Amiria Dhakil Madrasha, Barguna.</h3>
@@ -77,7 +77,7 @@ const Navbar = () => {
         </div>
         </div>
       </div>
-    </div>
+    </header>
   );
 };
 

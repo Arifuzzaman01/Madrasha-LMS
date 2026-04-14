@@ -123,7 +123,7 @@ export default function CourseFilters() {
           <div className="hidden md:block">
             <Btn
             text="My Classes"
-            href="/myCourses"
+            href="/myClasses"
             Icon={HiOutlineBookOpen}
             clsName="md:py-3 md:px-5 text-sm"
           ></Btn>
