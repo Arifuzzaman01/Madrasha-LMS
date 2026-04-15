@@ -9,12 +9,20 @@ import {
   HiOutlineBookOpen,
   HiOutlineCurrencyDollar,
   HiOutlineCalendar,
+  HiOutlinePhotograph,
 } from "react-icons/hi";
 import { generateId } from "@/utils/idGenerator";
 import { IoIosOptions } from "react-icons/io";
 import toast from "react-hot-toast";
+import { uploadImage } from "@/utils/uploadImage";
+import Image from "next/image";
+import { GiDuration } from "react-icons/gi";
 
 export default function AddCoursePage() {
+  const [preview, setPreview] = React.useState(null);
+  const [imageFile, setImageFile] = React.useState(null);
+  const [uploading, setUploading] = React.useState(false);
+  const [uploadedUrl, setUploadedUrl] = React.useState(null);
   const {
     register,
     handleSubmit,
@@ -23,6 +31,34 @@ export default function AddCoursePage() {
     formState: { errors },
   } = useForm();
 
+  const handleFileChange = async (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setImageFile(file); // স্টেটে রাখলেন ফিউচার ইউজের জন্য
+      setPreview(URL.createObjectURL(file));
+
+      await handleUpload(file);
+    }
+  };
+
+  const handleUpload = async (fileToUpload) => {
+    if (!fileToUpload) return;
+
+    setUploading(true);
+    try {
+      const url = await uploadImage(fileToUpload);
+      if (url) {
+        setUploadedUrl(url);
+        alert("Image Uploaded Successfully!");
+      } else {
+        console.error("Upload failed: URL is null");
+      }
+    } catch (error) {
+      console.error("Upload Error:", error);
+    } finally {
+      setUploading(false);
+    }
+  };
   // TanStack Query Mutation
   const mutation = useMutation({
     mutationFn: async (newCourse) => {
@@ -45,14 +81,14 @@ export default function AddCoursePage() {
   const onSubmit = (data) => {
     const courseData = {
       ...data,
+      icon: uploadedUrl,
       courseId: generateId(data.courseName),
       status: "pending",
-      teacherId: "T-8801", // Example: Get from Auth Context
-      createdAt: new Date().toISOString(),
+      teacherId: "T-8801", // এইটা ডেমো, রিয়েল অ্যাপ্লিকেশনে ইউজারের আইডি থেকে আসবে
     };
     mutation.mutate(courseData);
   };
-
+  console.log(uploadedUrl, "preview");
   return (
     <div className="max-w-7xl mx-auto ">
       <div className="mb-8">
@@ -103,7 +139,7 @@ export default function AddCoursePage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="space-y-2">
             <label className="text-sm font-black text-gray-700 flex items-center gap-2">
-             <IoIosOptions className="text-emerald-600" /> Course Category
+              <IoIosOptions className="text-emerald-600" /> Course Category
             </label>
 
             <select
@@ -159,13 +195,36 @@ export default function AddCoursePage() {
 
           <div className="space-y-2">
             <label className="text-sm font-black text-gray-700  flex items-center gap-2">
-              Course Icon URL
+              Course Icon
             </label>
-            <input
-              {...register("courseIcon")}
-              className="w-full p-3 bg-gray-50 rounded-sm border border-gray-300 focus:ring-1 focus:ring-primary/20 outline-none  text-gray-800"
-              placeholder="https://icon-link.com"
-            />
+
+            <div className="flex flex-col md:flex-row items-center gap-6">
+              {/* Image Preview Box */}
+              <div className="w-12 h-12 rounded-2xl border-2 border-dashed border-gray-200 flex items-center justify-center overflow-hidden bg-gray-50">
+                {preview ? (
+                  <Image
+                    src={preview}
+                    width={20}
+                    height={20}
+                    alt="Preview"
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <HiOutlinePhotograph size={40} className="text-gray-300" />
+                )}
+              </div>
+
+              {/* Upload Inputs */}
+              <div className="flex-1 w-full space-y-3   bg-gray-50 rounded-sm border border-gray-300 focus:ring-1 focus:ring-primary/20 outline-none  text-gray-800">
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={handleFileChange}
+                  disabled={uploading || uploadedUrl} // Disable if uploading or already uploaded
+                  className={`block w-full text-sm text-gray-500 file:mr-4 file:py-4 file:px-4 file:bg-primary file:rounded-l-sm file:border-0 file:text-sm file:font-bold file:text-gray-200 hover:file:bg-emerald-100 hover:file:text-primary cursor-pointer ${uploading || uploadedUrl ? "cursor-not-allowed opacity-50 file:bg-gray-500" : ""}`}
+                />
+              </div>
+            </div>
           </div>
         </div>
 
@@ -198,7 +257,50 @@ export default function AddCoursePage() {
             />
           </div>
         </div>
+        {/* duration */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="space-y-2">
+            <label className="text-sm font-black text-gray-700  flex items-center gap-2">
+             <GiDuration /> Courses Duration (in weeks)
+            </label>
+            <input
+              type="number"
+              {...register("duration", {
+                required: "Duration is required",
+                min: 1,
+              })}
+              className="w-full p-3 bg-gray-50 rounded-sm border border-gray-300 focus:ring-1 focus:ring-primary/20 outline-none  text-gray-800"
+            />
+          </div>
+          {/* course type */}
+          <div className="space-y-2">
+            <label className="text-sm font-black text-gray-700 flex items-center gap-2">
+              Courses Type
+            </label>
 
+            <select
+              {...register("courseType", {
+                required: "Course type is required",
+              })}
+              className="w-full p-3 bg-gray-50 rounded-sm border border-gray-300 focus:ring-1 focus:ring-primary/20 outline-none text-gray-800 font-medium cursor-pointer appearance-none"
+              defaultValue="online"
+            >
+              <option value="" disabled>
+                Select a category
+              </option>
+              <option value="online">Online</option>
+              <option value="offline">Off Line</option>
+              
+            </select>
+
+            {/* Error Message */}
+            {errors.courseType && (
+              <span className="text-red-500 text-xs font-bold uppercase tracking-tighter">
+                {errors.courseType.message}
+              </span>
+            )}
+          </div>
+        </div>
         {/* Section 4: Course Requirements */}
         <div className="space-y-2">
           <label className="text-sm font-black text-gray-700 uppercase">

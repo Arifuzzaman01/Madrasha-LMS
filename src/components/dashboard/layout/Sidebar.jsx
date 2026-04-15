@@ -86,7 +86,7 @@ export default function Sidebar({ isMobile ,setIsMenuOpen}) {
               data-tooltip-id="sidebar-tooltip"
               data-tooltip-content={isCollapsed ? item.name : ""}
               className={`flex items-center gap-4 p-3 rounded-sm cursor-pointer transition-all 
-                ${isCollapsed ? "justify-center" : "hover:bg-emerald-50 text-gray-600 hover:text-emerald-700 font-bold text-sm"} ${activeItem === item?.id && "bg-green-200"}`}
+                ${isCollapsed ? "justify-center" : "hover:bg-emerald-50 hover:text-emerald-700 font-bold text-sm"} ${activeItem === item?.id && "bg-primary text-gray-100"}`}
             >
               <div className="flex-shrink-0">{item.icon}</div>
               {!isCollapsed && <span>{item.name}</span>}
